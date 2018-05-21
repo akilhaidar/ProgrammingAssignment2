@@ -20,5 +20,15 @@ inverse <- NULL
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
+ 
+ inverse <- x$getinverse()
+ +        if(!is.null(inverse)) {
+ +        	message("getting cached inverse")
+ +        	return(inverse)
+ +        }
+ +        data <- x$get()
+ +        inverse <- solve(data, ...)
+ +        x$setinverse(inverse)
+ +        inverse
         ## Return a matrix that is the inverse of 'x'
 }
